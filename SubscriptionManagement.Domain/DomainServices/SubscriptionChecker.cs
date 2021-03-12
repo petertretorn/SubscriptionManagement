@@ -1,0 +1,66 @@
+﻿using SubscriptionManagement.Domain.Contracts;
+using SubscriptionManagement.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace SubscriptionManagement.Domain.DomainServices
+{
+    public class SubscriptionChecker : ISubscriptionChecker
+    {
+        public SubscriptionChecker(IEnumerable<ISubscriptionRule> rules)
+        {
+            this._subscriptionRules = rules;
+        }
+
+        private IEnumerable<ISubscriptionRule> _subscriptionRules;
+
+        public bool CheckEligibility(User customer)
+        {
+            foreach (var subscription in customer.Subscriptions)
+            {
+                foreach (var rule in this._subscriptionRules)
+                {
+                    var isRuleFulfilled = rule.Evaluate(subscription);
+
+                    if (!isRuleFulfilled) return false;
+                }
+            }
+
+            return true;
+        }
+    }
+
+
+    public class NoOverDuePaymentRule : ISubscriptionRule
+    {
+        public string Description
+        {
+            get
+            {
+                return "No Overdue Payments of Existing Subscriptions";
+            }
+        }
+
+        public bool Evaluate(Subscription subscription)
+        {
+            return !subscription.HasDefaulted;
+        }
+    }
+
+    public class ResidenceRule : ISubscriptionRule
+    {
+        public string Description
+        {
+            get
+            {
+                return "Only EU residents";
+            }
+        }
+
+        public bool Evaluate(Subscription subscription)
+        {
+            return true;
+        }
+    }
+}
