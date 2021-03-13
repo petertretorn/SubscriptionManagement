@@ -1,15 +1,11 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using SubscriptionManagement.Application.Contracts;
 using SubscriptionManagement.Application.Exceptions;
-using SubscriptionManagement.Domain.Contracts;
 using SubscriptionManagement.Domain.DomainServices;
-using SubscriptionManagement.Domain.Entities;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static SubscriptionManagement.Application.Features.AddSubscription.MappingProfile;
 
 namespace SubscriptionManagement.Application.Features.AddSubscription
 {
@@ -17,16 +13,13 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
     {
         private readonly ISubscriptionRepository _subscriptionRepository;
         private readonly ICustomerRepository _userRepository;
-        private readonly IMapper _mapper;
 
         public AddSubscriptionCommandHandler(
             ISubscriptionRepository subscriptionRepository, 
-            ICustomerRepository userRepository,
-            IMapper mapper)
+            ICustomerRepository userRepository)
         {
             this._subscriptionRepository = subscriptionRepository;
             this._userRepository = userRepository;
-            this._mapper = mapper;
         }
 
         public async Task<Guid> Handle(AddSubscriptionCommand request, CancellationToken cancellationToken)
@@ -37,7 +30,7 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
             if (validationResult.Errors.Count > 0)
                 throw new Exceptions.ValidationException(validationResult);
 
-            var subscription = _mapper.Map<Subscription>(request);
+            var subscription = AddSubscriptionMapper.Map(request);
 
             var customer = await _userRepository.GetByIdAsync(request.CustomerId);
 
@@ -50,9 +43,8 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
             }
 
             await _subscriptionRepository.AddAsync(subscription);
-            
 
-            throw new NotImplementedException();
+            return subscription.Id;
         }
     }
 }

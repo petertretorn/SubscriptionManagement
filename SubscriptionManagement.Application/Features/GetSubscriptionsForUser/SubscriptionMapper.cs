@@ -11,6 +11,7 @@ namespace SubscriptionManagement.Application.Features.GetSubscriptionsForUser
         {
             return new SubscriptionDto
             {
+                Id = subscription.Id,
                 Start = subscription.Start,
                 Description = subscription.Type.Description,
                 Level = subscription.Type.Level.ToString(),
