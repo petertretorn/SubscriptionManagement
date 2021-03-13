@@ -9,6 +9,7 @@ namespace SubscriptionManagement.Domain.Entities
 {
     public class Subscription : Entity
     {
+        public Guid UserId { get; set; }
         public DateTime Start { get; private set; }
 
         public DateTime End { get; private set; }

@@ -16,6 +16,7 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
         public decimal FlatFee { get; set; }
         public decimal MonthlyRate { get; set; }
         public string CurrencyCode { get; set; }
+        public int SubscriptionPeriodInDays { get; set; }
         public bool AutomaticallyReneweble { get; set; }
     }
 }
