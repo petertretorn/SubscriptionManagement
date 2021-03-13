@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SubscriptionManagement.Api.Middleware;
 using SubscriptionManagement.Application;
 using SubscriptionManagement.Infrastructure;
 using System;
@@ -42,7 +43,7 @@ namespace SubscriptionManagement.Api
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

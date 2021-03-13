@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SubscriptionManagement.Application.Features.AddSubscription;
+using SubscriptionManagement.Application.Features.DeleteSubscription;
 using SubscriptionManagement.Application.Features.GetSubscriptionsForUser;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace SubscriptionManagement.Api.Controllers
         public async Task<ActionResult<Guid>> Create([FromBody] AddSubscriptionCommand command)
         {
             var id = await _mediator.Send(command);
+            
             return Ok(id);
         }
 
@@ -41,6 +43,16 @@ namespace SubscriptionManagement.Api.Controllers
             var result = await _mediator.Send(query);
             
             return Ok(result);
+        }
+
+        [HttpDelete("{id}", Name = "DeleteEvent")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var deleteEventCommand = new DeleteSubscriptionCommand() { SubscriptionId = id };
+            
+            await _mediator.Send(deleteEventCommand);
+            
+            return NoContent();
         }
     }
 }
