@@ -7,7 +7,7 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
 {
     public class AddSubscriptionCommand : IRequest<Guid>
     {
-        public Guid UserId { get; set; }
+        public Guid CustomerId { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public Guid ProductId { get; set; }

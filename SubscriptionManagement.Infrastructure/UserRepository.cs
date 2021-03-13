@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SubscriptionManagement.Infrastructure
 {
-    class UserRepository : BaseRepository<User>, IUserRepository
+    class UserRepository : BaseRepository<Customer>, IUserRepository
     {
         public UserRepository(DataContext context) : base(context)
         {

@@ -12,14 +12,14 @@ namespace SubscriptionManagement.Infrastructure
         {
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Customer> Users { get; set; }
         public DbSet<Subscription> Subscription { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             FakeData.Init();
 
-            modelBuilder.Entity<User>().HasData(FakeData.Users);
+            modelBuilder.Entity<Customer>().HasData(FakeData.Users);
         }
     }
 }

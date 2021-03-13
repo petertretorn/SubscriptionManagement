@@ -41,13 +41,13 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
 
             var subscription = _mapper.Map<Subscription>(request);
 
-            var user = await _userRepository.GetByIdAsync(request.UserId);
+            var customer = await _userRepository.GetByIdAsync(request.CustomerId);
 
-            var isEligible = _subscriptionChecker.CheckEligibility(user);
+            var isEligible = _subscriptionChecker.CheckEligibility(customer);
 
             if (!isEligible)
             {
-                throw new NotEligibleException(request.UserId);
+                throw new NotEligibleException(request.CustomerId);
             }
 
             await _subscriptionRepository.AddAsync(subscription);

@@ -15,7 +15,7 @@ namespace SubscriptionManagement.Domain.DomainServices
 
         private IEnumerable<ISubscriptionRule> _subscriptionRules;
 
-        public bool CheckEligibility(User customer)
+        public bool CheckEligibility(Customer customer)
         {
             foreach (var subscription in customer.Subscriptions)
             {

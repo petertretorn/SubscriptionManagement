@@ -4,6 +4,6 @@ namespace SubscriptionManagement.Domain.Contracts
 {
     public interface ISubscriptionChecker
     {
-        bool CheckEligibility(User user);
+        bool CheckEligibility(Customer user);
     }
 }

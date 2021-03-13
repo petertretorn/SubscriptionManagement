@@ -10,7 +10,7 @@ namespace SubscriptionManagement.Infrastructure
     public static class FakeData
     {
         public static List<Subscription> Subscriptions;
-        public static List<User> Users;
+        public static List<Customer> Users;
 
         public static void Init()
         {
@@ -39,7 +39,7 @@ namespace SubscriptionManagement.Infrastructure
                 .RuleFor(x => x.City, x => x.Address.City())
                 .RuleFor(x => x.PostalCode, x => x.Address.ZipCode());
 
-            var userFaker = new Faker<User>()
+            var userFaker = new Faker<Customer>()
                 .RuleFor(x => x.Id, Guid.NewGuid)
                 .RuleFor(x => x.Name, x => x.Name.FullName())
                 .RuleFor(x => x.Address, addressFaker)
