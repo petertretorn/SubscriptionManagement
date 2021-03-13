@@ -13,6 +13,12 @@ namespace SubscriptionManagement.Domain.DomainServices
             this._subscriptionRules = rules;
         }
 
+        // TODO - register with DI container
+        public SubscriptionChecker()
+        {
+            this._subscriptionRules = new List<ISubscriptionRule> { new NoOverDuePaymentRule(), new ResidenceRule() };
+        }
+
         private IEnumerable<ISubscriptionRule> _subscriptionRules;
 
         public bool CheckEligibility(Customer customer)
