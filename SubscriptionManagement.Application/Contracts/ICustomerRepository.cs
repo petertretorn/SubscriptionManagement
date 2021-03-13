@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SubscriptionManagement.Application.Contracts
 {
-    public interface IUserRepository : IAsyncRepository<Customer>
+    public interface ICustomerRepository : IAsyncRepository<Customer>
     {
         // specific methods related to User persistence here
     }

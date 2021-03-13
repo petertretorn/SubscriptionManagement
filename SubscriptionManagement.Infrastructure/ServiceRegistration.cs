@@ -17,7 +17,7 @@ namespace SubscriptionManagement.Infrastructure
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICustomerRepository, UserRepository>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 
             return services;

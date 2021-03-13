@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SubscriptionManagement.Application.Features.GetSubscriptionsForUser
 {
-    public class GetSubscriptionsQuery : IRequest<SubscriptionListDto>
+    public class GetSubscriptionsQuery : IRequest<IEnumerable<SubscriptionDto>>
     {
         public Guid CustomerId { get; set; }
     }

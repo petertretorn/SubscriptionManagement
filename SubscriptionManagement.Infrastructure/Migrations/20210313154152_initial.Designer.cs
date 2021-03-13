@@ -10,7 +10,7 @@ using SubscriptionManagement.Infrastructure;
 namespace SubscriptionManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210313143723_initial")]
+    [Migration("20210313154152_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,7 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0db2e155-fe61-4d45-87f7-c3af6343eb29"),
+                            Id = new Guid("b7f803c5-43b9-4644-974f-9dc728078042"),
                             Email = "something@gmail.com",
                             Name = "Jens Pedersen"
                         });
@@ -71,14 +71,14 @@ namespace SubscriptionManagement.Infrastructure.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Subscription");
+                    b.ToTable("Subscriptions");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cc4fa774-5e91-4eed-9925-6379d964680c"),
+                            Id = new Guid("a1302b50-6e85-4686-ae54-2c14fa3107e5"),
                             AutomaticallyReneweble = true,
-                            CustomerId = new Guid("0db2e155-fe61-4d45-87f7-c3af6343eb29"),
+                            CustomerId = new Guid("b7f803c5-43b9-4644-974f-9dc728078042"),
                             HasDefaulted = false,
                             Start = new DateTime(2020, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
@@ -110,7 +110,7 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                             b1.HasData(
                                 new
                                 {
-                                    CustomerId = new Guid("0db2e155-fe61-4d45-87f7-c3af6343eb29"),
+                                    CustomerId = new Guid("b7f803c5-43b9-4644-974f-9dc728078042"),
                                     City = "Odensen",
                                     PostalCode = "5000",
                                     Street = "Fuglebakken 33"
@@ -139,15 +139,15 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                             b1.Property<int>("Level")
                                 .HasColumnType("int");
 
+                            b1.Property<int>("PeriodInDays")
+                                .HasColumnType("int");
+
                             b1.Property<Guid>("ProductId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<int>("SubscriptionPeriodInDays")
-                                .HasColumnType("int");
-
                             b1.HasKey("SubscriptionId");
 
-                            b1.ToTable("Subscription");
+                            b1.ToTable("Subscriptions");
 
                             b1.WithOwner()
                                 .HasForeignKey("SubscriptionId");
@@ -155,11 +155,11 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                             b1.HasData(
                                 new
                                 {
-                                    SubscriptionId = new Guid("cc4fa774-5e91-4eed-9925-6379d964680c"),
+                                    SubscriptionId = new Guid("a1302b50-6e85-4686-ae54-2c14fa3107e5"),
                                     Description = "some description",
                                     Level = 4,
-                                    ProductId = new Guid("6f7473d1-d484-4857-9e9f-e795d79a60f5"),
-                                    SubscriptionPeriodInDays = 90
+                                    PeriodInDays = 365,
+                                    ProductId = new Guid("0e4c5d3a-8c5b-4ee6-ae3b-3b6656d224e2")
                                 });
                         });
 
@@ -179,7 +179,7 @@ namespace SubscriptionManagement.Infrastructure.Migrations
 
                             b1.HasKey("SubscriptionId");
 
-                            b1.ToTable("Subscription");
+                            b1.ToTable("Subscriptions");
 
                             b1.WithOwner()
                                 .HasForeignKey("SubscriptionId");
@@ -187,7 +187,7 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                             b1.HasData(
                                 new
                                 {
-                                    SubscriptionId = new Guid("cc4fa774-5e91-4eed-9925-6379d964680c"),
+                                    SubscriptionId = new Guid("a1302b50-6e85-4686-ae54-2c14fa3107e5"),
                                     CurrencyCode = "DKK",
                                     FlatFee = 100m,
                                     MonthlyRate = 99m

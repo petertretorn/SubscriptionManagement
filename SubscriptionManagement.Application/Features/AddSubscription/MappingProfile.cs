@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SubscriptionManagement.Application.Features.GetSubscriptionsForUser;
 using SubscriptionManagement.Domain.Entities;
 using SubscriptionManagement.Domain.ValueObjects;
 using System;
@@ -16,9 +17,12 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
                 .ForMember(dest => dest.PricingPlan.MonthlyRate, opt => opt.MapFrom(src => src.MonthlyRate))
 
                 .ForMember(dest => dest.SubscriptionType.ProductId, opt => opt.MapFrom(src => src.ProductId))
-                .ForMember(dest => dest.SubscriptionType.SubscriptionPeriodInDays, opt => opt.MapFrom(src => src.SubscriptionPeriodInDays))
+                .ForMember(dest => dest.SubscriptionType.PeriodInDays, opt => opt.MapFrom(src => src.SubscriptionPeriodInDays))
                 .ForMember(dest => dest.SubscriptionType.Description, opt => opt.MapFrom(src => src.Description))
                 .ForMember(dest => dest.SubscriptionType.Level, opt => opt.MapFrom(src => Enum.Parse(typeof(Level), src.Level)));
+
+            CreateMap<Subscription, SubscriptionDto>().ReverseMap();
+                
         }
     }
 }

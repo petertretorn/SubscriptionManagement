@@ -14,7 +14,7 @@ namespace SubscriptionManagement.Infrastructure
         }
 
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Subscription> Subscription { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -63,7 +63,8 @@ namespace SubscriptionManagement.Infrastructure
                         ProductId = Guid.NewGuid(),
                         Description = "some description",
                         SubscriptionPeriodInDays = 90,
-                        Level = Level.Premium
+                        Level = Level.Premium,
+                        PeriodInDays = 365
                     });
 
                 b.OwnsOne(s => s.PricingPlan)

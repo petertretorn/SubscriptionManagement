@@ -10,7 +10,7 @@ namespace SubscriptionManagement.Domain.Entities
 
         public Level Level { get; set; }
         public string Description { get; set; }
-        public int SubscriptionPeriodInDays { get; set; }
+        public int PeriodInDays { get; set; }
 
     }
 

@@ -24,7 +24,7 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Subscription",
+                name: "Subscriptions",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -34,7 +34,7 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                     SubscriptionType_ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     SubscriptionType_Level = table.Column<int>(type: "int", nullable: true),
                     SubscriptionType_Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SubscriptionType_SubscriptionPeriodInDays = table.Column<int>(type: "int", nullable: true),
+                    SubscriptionType_PeriodInDays = table.Column<int>(type: "int", nullable: true),
                     PricingPlan_FlatFee = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     PricingPlan_MonthlyRate = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     PricingPlan_CurrencyCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -43,9 +43,9 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subscription", x => x.Id);
+                    table.PrimaryKey("PK_Subscriptions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Subscription_Customers_CustomerId",
+                        name: "FK_Subscriptions_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
@@ -55,23 +55,23 @@ namespace SubscriptionManagement.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Customers",
                 columns: new[] { "Id", "Email", "Name", "Address_City", "Address_PostalCode", "Address_Street" },
-                values: new object[] { new Guid("0db2e155-fe61-4d45-87f7-c3af6343eb29"), "something@gmail.com", "Jens Pedersen", "Odensen", "5000", "Fuglebakken 33" });
+                values: new object[] { new Guid("b7f803c5-43b9-4644-974f-9dc728078042"), "something@gmail.com", "Jens Pedersen", "Odensen", "5000", "Fuglebakken 33" });
 
             migrationBuilder.InsertData(
-                table: "Subscription",
-                columns: new[] { "Id", "AutomaticallyReneweble", "CustomerId", "End", "HasDefaulted", "Start", "SubscriptionType_Description", "SubscriptionType_Level", "SubscriptionType_ProductId", "SubscriptionType_SubscriptionPeriodInDays", "PricingPlan_CurrencyCode", "PricingPlan_FlatFee", "PricingPlan_MonthlyRate" },
-                values: new object[] { new Guid("cc4fa774-5e91-4eed-9925-6379d964680c"), true, new Guid("0db2e155-fe61-4d45-87f7-c3af6343eb29"), null, false, new DateTime(2020, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "some description", 4, new Guid("6f7473d1-d484-4857-9e9f-e795d79a60f5"), 90, "DKK", 100m, 99m });
+                table: "Subscriptions",
+                columns: new[] { "Id", "AutomaticallyReneweble", "CustomerId", "End", "HasDefaulted", "Start", "SubscriptionType_Description", "SubscriptionType_Level", "SubscriptionType_PeriodInDays", "SubscriptionType_ProductId", "PricingPlan_CurrencyCode", "PricingPlan_FlatFee", "PricingPlan_MonthlyRate" },
+                values: new object[] { new Guid("a1302b50-6e85-4686-ae54-2c14fa3107e5"), true, new Guid("b7f803c5-43b9-4644-974f-9dc728078042"), null, false, new DateTime(2020, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "some description", 4, 365, new Guid("0e4c5d3a-8c5b-4ee6-ae3b-3b6656d224e2"), "DKK", 100m, 99m });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Subscription_CustomerId",
-                table: "Subscription",
+                name: "IX_Subscriptions_CustomerId",
+                table: "Subscriptions",
                 column: "CustomerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Subscription");
+                name: "Subscriptions");
 
             migrationBuilder.DropTable(
                 name: "Customers");

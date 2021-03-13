@@ -9,7 +9,7 @@ namespace SubscriptionManagement.Application.UnitTests
         [Fact]
         public void Test1()
         {
-            FakeData.Init();
+            
 
         }
     }

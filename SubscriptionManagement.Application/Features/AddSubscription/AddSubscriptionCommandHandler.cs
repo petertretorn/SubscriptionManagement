@@ -16,12 +16,12 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
     public class AddSubscriptionCommandHandler : IRequestHandler<AddSubscriptionCommand, Guid>
     {
         private readonly ISubscriptionRepository _subscriptionRepository;
-        private readonly IUserRepository _userRepository;
+        private readonly ICustomerRepository _userRepository;
         private readonly IMapper _mapper;
 
         public AddSubscriptionCommandHandler(
             ISubscriptionRepository subscriptionRepository, 
-            IUserRepository userRepository,
+            ICustomerRepository userRepository,
             IMapper mapper)
         {
             this._subscriptionRepository = subscriptionRepository;

@@ -1,8 +1,11 @@
-﻿using SubscriptionManagement.Application.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using SubscriptionManagement.Application.Contracts;
 using SubscriptionManagement.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SubscriptionManagement.Infrastructure
 {
@@ -12,6 +15,10 @@ namespace SubscriptionManagement.Infrastructure
         {
         }
 
-        // TODO
+        public async Task<IEnumerable<Subscription>> GetSubscriptionsForCustomer(Guid customerId)
+        {
+            return await _dbContext.Subscriptions.Where(s => s.CustomerId == customerId).ToListAsync();
+        }
+
     }
 }

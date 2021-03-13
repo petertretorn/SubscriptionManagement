@@ -40,13 +40,13 @@ namespace SubscriptionManagement.Domain.Entities
                 return;
             }
 
-            var remainingDays = SubscriptionType.SubscriptionPeriodInDays - RemainingDays();
+            var remainingDays = SubscriptionType.PeriodInDays - RemainingDays();
 
             End = DateTime.Now + TimeSpan.FromDays(remainingDays);
 
             int RemainingDays()
             {
-                return ((DateTime.Now - Start).Days % SubscriptionType.SubscriptionPeriodInDays);
+                return ((DateTime.Now - Start).Days % SubscriptionType.PeriodInDays);
             }
         }
 
