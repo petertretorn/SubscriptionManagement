@@ -5,11 +5,11 @@ namespace SubscriptionManagement.Application.Features.GetSubscriptionsForUser
     
     public class SubscriptionDto
     {
-        public DateTime SubscriptionStart { get; set; }
-        public int SubscriptionPeriodInDays { get; set; }
-        public Guid SubscriptionProductId { get; set; }
+        public DateTime Start { get; set; }
+        public int PeriodInDays { get; set; }
+        public Guid ProductId { get; set; }
 
-        public string SubscriptionLevel { get; set; }
-        public string SubscriptionDescription { get; set; }
+        public string Level { get; set; }
+        public string Description { get; set; }
     }
 }

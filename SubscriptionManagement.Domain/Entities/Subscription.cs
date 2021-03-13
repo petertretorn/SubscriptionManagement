@@ -14,7 +14,7 @@ namespace SubscriptionManagement.Domain.Entities
 
         public DateTime? End { get; set; }
 
-        public SubscriptionType SubscriptionType { get; set; }
+        public SubscriptionType Type { get; set; }
         public PricingPlan PricingPlan { get; set; }
 
 
@@ -40,13 +40,13 @@ namespace SubscriptionManagement.Domain.Entities
                 return;
             }
 
-            var remainingDays = SubscriptionType.PeriodInDays - RemainingDays();
+            var remainingDays = Type.PeriodInDays - RemainingDays();
 
             End = DateTime.Now + TimeSpan.FromDays(remainingDays);
 
             int RemainingDays()
             {
-                return ((DateTime.Now - Start).Days % SubscriptionType.PeriodInDays);
+                return ((DateTime.Now - Start).Days % Type.PeriodInDays);
             }
         }
 

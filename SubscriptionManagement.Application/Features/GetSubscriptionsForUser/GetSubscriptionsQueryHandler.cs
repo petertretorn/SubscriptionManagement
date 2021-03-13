@@ -4,6 +4,7 @@ using SubscriptionManagement.Application.Contracts;
 using SubscriptionManagement.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,18 +17,16 @@ namespace SubscriptionManagement.Application.Features.GetSubscriptionsForUser
         private IMapper _mapper;
 
         public GetSubscriptionsQueryHandler(
-            ISubscriptionRepository subscriptionRepository,
-            IMapper mapper)
+            ISubscriptionRepository subscriptionRepository)
         {
             this._subscriptionRepository = subscriptionRepository;
-            this._mapper = mapper;
         }
 
         public async Task<IEnumerable<SubscriptionDto>> Handle(GetSubscriptionsQuery request, CancellationToken cancellationToken)
         {
             var subscriptions = await _subscriptionRepository.GetSubscriptionsForCustomer(request.CustomerId);
 
-            var subscriptionDtos = _mapper.Map<IEnumerable<SubscriptionDto>>(subscriptions);
+            var subscriptionDtos = subscriptions.Select(s => SubscriptionMapper.Map(s));
 
             return subscriptionDtos;
         }

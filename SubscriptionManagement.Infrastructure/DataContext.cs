@@ -56,7 +56,7 @@ namespace SubscriptionManagement.Infrastructure
                         Start = new DateTime(2020, 10, 22),
                     });
 
-                b.OwnsOne(s => s.SubscriptionType)
+                b.OwnsOne(s => s.Type)
                     .HasData(new
                     {
                         SubscriptionId = subscriptionId,
