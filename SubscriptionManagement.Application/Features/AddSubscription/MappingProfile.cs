@@ -12,9 +12,8 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
         public MappingProfile()
         {
             CreateMap<AddSubscriptionCommand, Subscription>()
-                .ForMember(dest => dest.PricingPlan.FlatFee, opt => opt.MapFrom(src => new Money(src.FlatFee, src.CurrencyCode)))
-                .ForMember(dest => dest.PricingPlan.MonthlyRate, opt => opt.MapFrom(src => new Money(src.MonthlyRate, src.CurrencyCode)))
-                .ForMember(dest => dest.PricingPlan.MonthlyRate, opt => opt.MapFrom(src => new Money(src.MonthlyRate, src.CurrencyCode)))
+                .ForMember(dest => dest.PricingPlan.FlatFee, opt => opt.MapFrom(src => src.FlatFee))
+                .ForMember(dest => dest.PricingPlan.MonthlyRate, opt => opt.MapFrom(src => src.MonthlyRate))
 
                 .ForMember(dest => dest.SubscriptionType.ProductId, opt => opt.MapFrom(src => src.ProductId))
                 .ForMember(dest => dest.SubscriptionType.SubscriptionPeriodInDays, opt => opt.MapFrom(src => src.SubscriptionPeriodInDays))

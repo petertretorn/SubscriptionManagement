@@ -10,7 +10,6 @@ namespace SubscriptionManagement.Domain.Entities
 {
     public class Customer : Entity
     {
-
         public string Name { get; set; }
         public Address Address { get; set; }
         public String Email { get; set; }

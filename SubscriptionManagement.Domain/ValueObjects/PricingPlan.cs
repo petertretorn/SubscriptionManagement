@@ -6,7 +6,8 @@ namespace SubscriptionManagement.Domain.ValueObjects
 {
     public class PricingPlan
     {
-        public Money FlatFee { get; set; }
-        public Money MonthlyRate { get; set; }
+        public decimal FlatFee { get; set; }
+        public decimal MonthlyRate { get; set; }
+        public String CurrencyCode { get; set; }
     }
 }

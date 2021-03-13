@@ -3,6 +3,7 @@ using MediatR;
 using SubscriptionManagement.Application.Contracts;
 using SubscriptionManagement.Application.Exceptions;
 using SubscriptionManagement.Domain.Contracts;
+using SubscriptionManagement.Domain.DomainServices;
 using SubscriptionManagement.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -41,8 +42,7 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
             var customer = await _userRepository.GetByIdAsync(request.CustomerId);
 
             var subscriptionChecker = new SubscriptionChecker();
-
-            var isEligible = _subscriptionChecker.CheckEligibility(customer);
+            var isEligible = subscriptionChecker.CheckEligibility(customer);
 
             if (!isEligible)
             {
