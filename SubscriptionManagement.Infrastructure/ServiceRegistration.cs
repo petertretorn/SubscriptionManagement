@@ -2,9 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SubscriptionManagement.Application.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SubscriptionManagement.Infrastructure
 {
@@ -17,7 +14,7 @@ namespace SubscriptionManagement.Infrastructure
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 
-            services.AddScoped<ICustomerRepository, UserRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 
             return services;

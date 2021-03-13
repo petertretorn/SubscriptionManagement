@@ -2,9 +2,6 @@
 using SubscriptionManagement.Application.Contracts;
 using SubscriptionManagement.Application.Exceptions;
 using SubscriptionManagement.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

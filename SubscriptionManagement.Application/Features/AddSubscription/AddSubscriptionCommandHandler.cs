@@ -5,21 +5,20 @@ using SubscriptionManagement.Domain.DomainServices;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using static SubscriptionManagement.Application.Features.AddSubscription.MappingProfile;
 
 namespace SubscriptionManagement.Application.Features.AddSubscription
 {
     public class AddSubscriptionCommandHandler : IRequestHandler<AddSubscriptionCommand, Guid>
     {
         private readonly ISubscriptionRepository _subscriptionRepository;
-        private readonly ICustomerRepository _userRepository;
+        private readonly ICustomerRepository _customerRepository;
 
         public AddSubscriptionCommandHandler(
             ISubscriptionRepository subscriptionRepository, 
-            ICustomerRepository userRepository)
+            ICustomerRepository customerRepository)
         {
             this._subscriptionRepository = subscriptionRepository;
-            this._userRepository = userRepository;
+            this._customerRepository = customerRepository;
         }
 
         public async Task<Guid> Handle(AddSubscriptionCommand request, CancellationToken cancellationToken)
@@ -30,9 +29,9 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
             if (validationResult.Errors.Count > 0)
                 throw new Exceptions.ValidationException(validationResult);
 
-            var subscription = AddSubscriptionMapper.Map(request);
+            var subscription = SubscriptionMapper.Map(request);
 
-            var customer = await _userRepository.GetByIdAsync(request.CustomerId);
+            var customer = await _customerRepository.GetByIdAsync(request.CustomerId);
 
             var subscriptionChecker = new SubscriptionChecker();
             var isEligible = subscriptionChecker.CheckEligibility(customer);

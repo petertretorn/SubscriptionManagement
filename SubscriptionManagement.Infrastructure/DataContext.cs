@@ -12,7 +12,6 @@ namespace SubscriptionManagement.Infrastructure
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
 

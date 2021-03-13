@@ -14,7 +14,6 @@ namespace SubscriptionManagement.Infrastructure
         public SubscriptionRepository(DataContext context) : base(context)
         {
         }
-
         public async Task<IEnumerable<Subscription>> GetSubscriptionsForCustomer(Guid customerId)
         {
             return await _dbContext.Subscriptions.Where(s => s.CustomerId == customerId).ToListAsync();
