@@ -17,6 +17,13 @@ namespace SubscriptionManagement.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Subscription>().OwnsOne(s => s.SubscriptionType);
+            
+            modelBuilder.Entity<Subscription>().OwnsOne(s => s.PricingPlan);
+            
+            modelBuilder.Entity<Customer>().OwnsOne(c => c.Address);
+
+
             FakeData.Init();
 
             modelBuilder.Entity<Customer>().HasData(FakeData.Users);

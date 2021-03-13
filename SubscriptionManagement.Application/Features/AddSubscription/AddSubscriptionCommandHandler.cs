@@ -16,18 +16,15 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
     {
         private readonly ISubscriptionRepository _subscriptionRepository;
         private readonly IUserRepository _userRepository;
-        private readonly ISubscriptionChecker _subscriptionChecker;
         private readonly IMapper _mapper;
 
         public AddSubscriptionCommandHandler(
             ISubscriptionRepository subscriptionRepository, 
             IUserRepository userRepository,
-            ISubscriptionChecker subscriptionChecker,
             IMapper mapper)
         {
             this._subscriptionRepository = subscriptionRepository;
             this._userRepository = userRepository;
-            this._subscriptionChecker = subscriptionChecker;
             this._mapper = mapper;
         }
 
@@ -42,6 +39,8 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
             var subscription = _mapper.Map<Subscription>(request);
 
             var customer = await _userRepository.GetByIdAsync(request.CustomerId);
+
+            var subscriptionChecker = new SubscriptionChecker();
 
             var isEligible = _subscriptionChecker.CheckEligibility(customer);
 

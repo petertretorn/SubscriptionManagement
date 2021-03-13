@@ -14,9 +14,11 @@ namespace SubscriptionManagement.Infrastructure
 
         public static void Init()
         {
+            var subscriptionsPeriods = new[] { 30, 90, 365 };
+
             var subscriptionTypeFaker = new Faker<SubscriptionType>()
                 .RuleFor(x => x.ProductId, Guid.NewGuid)
-                .RuleFor(x => x.SubscriptionPeriodInDays, x => x.Random.Number(100))
+                .RuleFor(x => x.SubscriptionPeriodInDays, x => x.PickRandom(subscriptionsPeriods))
                 .RuleFor(x => x.Level, x => x.Random.Enum<Level>());
 
             var fakeFeeMoney = new Money(399, "DKK");
@@ -42,10 +44,13 @@ namespace SubscriptionManagement.Infrastructure
             var userFaker = new Faker<Customer>()
                 .RuleFor(x => x.Id, Guid.NewGuid)
                 .RuleFor(x => x.Name, x => x.Name.FullName())
+                .RuleFor(x => x.Email, x => x.Person.Email)
                 .RuleFor(x => x.Address, addressFaker)
-                .RuleFor(x => x.Subscriptions, x => subscriptionFaker.Generate(x.Random.Int(1, 4)));
+                .RuleFor(x => x.Subscriptions, x => subscriptionFaker.Generate(x.Random.Int(1, 5)));
 
             Users = userFaker.Generate(5);
+
+            var k = "jkk";
         }
     }
 }

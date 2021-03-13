@@ -15,24 +15,14 @@ namespace SubscriptionManagement.Domain.Entities
         public Address Address { get; set; }
         public String Email { get; set; }
 
-        public List<Subscription> Subscriptions { get; private set; } = new List<Subscription>();
-
-        //public IReadOnlyCollection<Subscription> Subscriptions
-        //{
-        //    get
-        //    {
-        //        return _subscriptions;
-        //    }
-        //    private set
-        //    {
-        //        _subscriptions = value;
-        //    }
-        //}
-
+        public IReadOnlyCollection<Subscription> Subscriptions { get; private set; } = new List<Subscription>();
 
         public void AddSubscription(Subscription newSubscription)
         {
-            Subscriptions.Add(newSubscription);
+            Subscriptions = new List<Subscription>(Subscriptions)
+            {
+                newSubscription
+            };
         }
     }
 }
