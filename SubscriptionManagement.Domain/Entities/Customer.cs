@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SubscriptionManagement.Domain.Entities
 {
-    public class User : Entity
+    public class Customer : Entity
     {
 
         public string Name { get; set; }

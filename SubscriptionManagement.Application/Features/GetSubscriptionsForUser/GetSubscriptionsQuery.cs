@@ -7,6 +7,6 @@ namespace SubscriptionManagement.Application.Features.GetSubscriptionsForUser
 {
     public class GetSubscriptionsQuery : IRequest<SubscriptionListDto>
     {
-        public Guid MyProperty { get; set; }
+        public Guid CustomerId { get; set; }
     }
 }
