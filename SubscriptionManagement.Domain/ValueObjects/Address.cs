@@ -9,6 +9,6 @@ namespace SubscriptionManagement.Domain.ValueObjects
         public String Street { get; set; }
 
         public String City { get; set; }
-        public int PostalCode { get; set; }
+        public String PostalCode { get; set; }
     }
 }

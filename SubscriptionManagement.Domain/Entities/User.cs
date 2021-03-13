@@ -9,24 +9,29 @@ namespace SubscriptionManagement.Domain.Entities
 {
     public class User
     {
+
         public string Name { get; set; }
         public Address Address { get; set; }
-        public Email Email { get; set; }
+        public String Email { get; set; }
 
-        private List<Subscription> _subscriptions = new List<Subscription>();
+        public List<Subscription> Subscriptions { get; private set; } = new List<Subscription>();
 
-        public IReadOnlyCollection<Subscription> Subscriptions
-        {
-            get
-            {
-                return _subscriptions;
-            }
-        }
+        //public IReadOnlyCollection<Subscription> Subscriptions
+        //{
+        //    get
+        //    {
+        //        return _subscriptions;
+        //    }
+        //    private set
+        //    {
+        //        _subscriptions = value;
+        //    }
+        //}
 
 
         public void AddSubscription(Subscription newSubscription)
         {
-            this._subscriptions.Add(newSubscription);
+            Subscriptions.Add(newSubscription);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace SubscriptionManagement.Domain.Entities
 {
     public class Subscription
     {
-        public DateTime Start { get; }
+        public DateTime Start { get; private set; }
 
         private DateTime _end;
         public DateTime End
@@ -19,8 +19,8 @@ namespace SubscriptionManagement.Domain.Entities
             }
         }
 
-        public SubscriptionType SubscriptionType { get; }
-        public PricingPlan PricingPlan { get; }
+        public SubscriptionType SubscriptionType { get; private set; }
+        public PricingPlan PricingPlan { get; private set; }
 
 
         private bool _automaticallyReneweble;
@@ -32,9 +32,11 @@ namespace SubscriptionManagement.Domain.Entities
             }
         }
 
-        //this field could be updated from event received from a Billing context/service
+        
         public bool _hasDefaulted;
         public bool HasDefaulted { get; }
+
+        //this method could be invoked in response to event received from a possible Billing context/service
         public void MarkSubscriptionAsDefaulted()
         {
             _hasDefaulted = true;
@@ -52,13 +54,13 @@ namespace SubscriptionManagement.Domain.Entities
                 return;
             }
 
-            var remainingDays = SubscriptionType.Duration.Days - RemainingDays();
+            var remainingDays = SubscriptionType.SubscriptionPeriodInDays - RemainingDays();
 
             _end = DateTime.Now + TimeSpan.FromDays(remainingDays);
 
             int RemainingDays()
             {
-                return ((DateTime.Now - Start).Days % SubscriptionType.Duration.Days);
+                return ((DateTime.Now - Start).Days % SubscriptionType.SubscriptionPeriodInDays);
             }
         }
 
