@@ -1,4 +1,5 @@
 ﻿using SubscriptionManagement.Domain.Contracts;
+using SubscriptionManagement.Domain.Util;
 using SubscriptionManagement.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace SubscriptionManagement.Domain.Entities
 {
-    public class User
+    public class User : Entity
     {
 
         public string Name { get; set; }

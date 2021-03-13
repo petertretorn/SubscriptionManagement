@@ -10,6 +10,8 @@ namespace SubscriptionManagement.Infrastructure
     public static class FakeData
     {
         public static List<Subscription> Subscriptions;
+        public static List<User> Users;
+
         public static void Init()
         {
             var subscriptionTypeFaker = new Faker<SubscriptionType>()
@@ -24,15 +26,13 @@ namespace SubscriptionManagement.Infrastructure
                 .RuleFor(x => x.FlatFee, fakeFeeMoney)
                 .RuleFor(x => x.MonthlyRate, fakeRateMoney);
 
-
             var subscriptionFaker = new Faker<Subscription>()
+                .RuleFor(x => x.Id, x => Guid.NewGuid())
                 .RuleFor(x => x.AutomaticallyReneweble, true)
                 .RuleFor(x => x.HasDefaulted, false)
-                .RuleFor(x => x.Start, x => x.Date.Past(1, refDate: DateTime.Now).Date)
+                .RuleFor(x => x.Start, x => x.Date.Past(2, refDate: DateTime.Now).Date)
                 .RuleFor(x => x.SubscriptionType, subscriptionTypeFaker)
                 .RuleFor(x => x.PricingPlan, pricingPlanFaker);
-
-            Subscriptions = subscriptionFaker.Generate(3);
 
             var addressFaker = new Faker<Address>()
                 .RuleFor(x => x.Street, x => x.Address.StreetAddress())
@@ -40,13 +40,12 @@ namespace SubscriptionManagement.Infrastructure
                 .RuleFor(x => x.PostalCode, x => x.Address.ZipCode());
 
             var userFaker = new Faker<User>()
+                .RuleFor(x => x.Id, Guid.NewGuid)
                 .RuleFor(x => x.Name, x => x.Name.FullName())
                 .RuleFor(x => x.Address, addressFaker)
-                .RuleFor(x => x.Subscriptions, Subscriptions);
+                .RuleFor(x => x.Subscriptions, x => subscriptionFaker.Generate(x.Random.Int(1, 4)));
 
-            var users = userFaker.Generate(3);
-
-            var k = "d";
+            Users = userFaker.Generate(5);
         }
     }
 }

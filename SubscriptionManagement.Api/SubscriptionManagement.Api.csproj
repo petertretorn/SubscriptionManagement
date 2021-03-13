@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SubscriptionManagement.Application\SubscriptionManagement.Application.csproj" />
+    <ProjectReference Include="..\SubscriptionManagement.Infrastructure\SubscriptionManagement.Infrastructure.csproj" />
   </ItemGroup>
 
 
