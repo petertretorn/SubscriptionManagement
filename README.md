@@ -6,6 +6,7 @@ The solution is designed according to the onion architecture with the domain mod
 - open package manager console
 - select Infrastructure as default project
 - run update-database command
+- set API project as start project, if not already chosen, and run solution
 
 Database is seeded with Customer with guid id of 33eb22ad-6700-45db-a209-03b9a6addacb
 
