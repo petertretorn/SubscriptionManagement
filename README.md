@@ -22,7 +22,7 @@ POST https://localhost:44338/api/subscription
 	"start": "2021-05-01T18:18:14.082Z",
 	"productId": "44d915f3-caea-4164-a70f-51b2f075d478",
 	"level": "Basic",
-	"description": "some description",
+	"category": "Broadband",
 	"flatFee": 89,
 	"monthlyRate": 99,
 	"currencyCode": "DKK",
