@@ -33,7 +33,7 @@ To delete subscription issue DELETE request with subscripId in URL path:
 
 DELETE https://localhost:44338/api/subscription/ \<subscripId>
 
-I didn't get around to make a client library calling the api, but since it is an api service it is a question of programmatically issuing HTTP request. In C# that could be done using HttpClient, example for POST request:
+I didn't get around to code up a client library, but given the solution provides languange agnostic HTTP endpoints it would be a question of programmatically issuing HTTP requests. In C# that could be done using HttpClient. POST request example:
 
 ```C#
 var subscriptionCommand = new subscriptionCommand("33eb22ad-6700-45db-a209-03b9a6addacb", ..... etc);
