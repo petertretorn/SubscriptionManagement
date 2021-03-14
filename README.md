@@ -14,7 +14,7 @@ GET https://localhost:44338/api/subscription/33eb22ad-6700-45db-a209-03b9a6addac
 To add subscription issue POST requst with customerId and data in payload:
 
 POST https://localhost:44338/api/subscription
-´´´
+```json
 {
 	"customerId": "33eb22ad-6700-45db-a209-03b9a6addacb",
 	"start": "2021-05-01T18:18:14.082Z",
@@ -26,7 +26,7 @@ POST https://localhost:44338/api/subscription
 	"currencyCode": "DKK",
 	"subscriptionPeriodInDays": 90
 }
-´´´
+```
 To delete subscription issue DELETE request with subscripId in URL path:
 
-DELETE https://localhost:44338/api/subscription/&lt;subscripId>
+DELETE https://localhost:44338/api/subscription/ \<subscripId>
