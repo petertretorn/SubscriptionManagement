@@ -53,5 +53,5 @@ var response = await client.PostAsync(url, data);
 string result = response.Content.ReadAsStringAsync().Result;
 ```
 
-If the client code resides inside an ASP.NET Core application it can be advantageous to use the HttpClientFactory and create a typed HttpClient exposed with custom methods and register it with the DI container.
+If the client code resides inside an ASP.NET Core application it can be advantageous to use the HttpClientFactory and create a typed HttpClient adorned with custom methods and register it with the DI container.
 
