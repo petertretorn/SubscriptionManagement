@@ -18,7 +18,7 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
 
             var type = new SubscriptionType
             {
-                Description = command.Description,
+                Category = (Category)Enum.Parse(typeof(Category), command.Category),
                 Level = (Level)Enum.Parse(typeof(Level), command.Level),
                 PeriodInDays = command.SubscriptionPeriodInDays,
                 ProductId = command.ProductId

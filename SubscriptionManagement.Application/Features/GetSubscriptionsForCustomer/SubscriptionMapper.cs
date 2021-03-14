@@ -13,8 +13,8 @@ namespace SubscriptionManagement.Application.Features.GetSubscriptionsForUser
             {
                 Id = subscription.Id,
                 Start = subscription.Start,
-                Description = subscription.Type.Description,
                 Level = subscription.Type.Level.ToString(),
+                Category = subscription.Type.Category.ToString(),
                 PeriodInDays = subscription.Type.PeriodInDays,
                 ProductId = subscription.Type.ProductId
             };

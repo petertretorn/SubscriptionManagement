@@ -7,7 +7,7 @@ namespace SubscriptionManagement.Domain.ValueObjects
     {
         public Guid ProductId { get; set; }
         public Level Level { get; set; }
-        public string Description { get; set; }
+        public Category Category { get; set; }
         public int PeriodInDays { get; set; }
     }
 
@@ -16,5 +16,12 @@ namespace SubscriptionManagement.Domain.ValueObjects
         Basic = 1,
         Standard = 2,
         Premium = 4
+    }
+
+    public enum Category
+    {
+        TV = 1,
+        Broadband = 2,
+        BlockBuster = 4
     }
 }

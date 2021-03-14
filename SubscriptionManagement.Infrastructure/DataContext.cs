@@ -15,8 +15,6 @@ namespace SubscriptionManagement.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>().OwnsOne(c => c.Address);
-
             var customerId = Guid.Parse("33eb22ad-6700-45db-a209-03b9a6addacb");
 
             modelBuilder.Entity<Customer>(b =>
@@ -31,7 +29,7 @@ namespace SubscriptionManagement.Infrastructure
                 {
                     CustomerId = customerId,
                     Street = "Fuglebakken 33",
-                    City = "Odensen",
+                    City = "Odense",
                     PostalCode = "5000"
                 });
             });
@@ -58,9 +56,9 @@ namespace SubscriptionManagement.Infrastructure
                     {
                         SubscriptionId = subscriptionId,
                         ProductId = Guid.NewGuid(),
-                        Description = "some description",
                         SubscriptionPeriodInDays = 90,
                         Level = Level.Premium,
+                        Category = Category.Broadband,
                         PeriodInDays = 365
                     });
 
