@@ -29,4 +29,4 @@ POST https://localhost:44338/api/subscription
 ```
 To delete subscription issue DELETE request with subscripId in URL path:
 
-DELETE https://localhost:44338/api/subscription/`<subscripId>`
+DELETE https://localhost:44338/api/subscription/\<subscripId>
