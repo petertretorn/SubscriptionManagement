@@ -37,7 +37,7 @@ To delete subscription issue DELETE request with subscripId in URL path:
 
 DELETE https://localhost:44338/api/subscription/ \<subscripId>
 
-I didn't get around to code up a client library, but given the solution provides languange agnostic HTTP endpoints it would be a question of programmatically issuing HTTP requests. In C# that could be done using HttpClient. POST request example:
+I didn't get around to code up a client library, but given the solution provides languange agnostic HTTP endpoints it would be a question of programmatically issuing HTTP requests. In C# that could be done using HttpClient, possibly hidden behind an abstraction for easier consumption. POST request example:
 
 ```C#
 var subscriptionCommand = new subscriptionCommand("33eb22ad-6700-45db-a209-03b9a6addacb", ..... etc);
@@ -53,5 +53,5 @@ var response = await client.PostAsync(url, data);
 string result = response.Content.ReadAsStringAsync().Result;
 ```
 
-If the client code resides inside an ASP.NET Core application it can be advantageous to use the HttpClientFactory and possibly create a typed HttpClient that can be registered with the DI container
+If the client code resides inside an ASP.NET Core application it can be advantageous to use the HttpClientFactory and create a typed HttpClient exposed with custom methods and register it with the DI container.
 
