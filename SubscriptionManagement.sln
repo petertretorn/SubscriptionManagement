@@ -9,9 +9,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubscriptionManagement.Doma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubscriptionManagement.Application", "SubscriptionManagement.Application\SubscriptionManagement.Application.csproj", "{6E4FF268-0615-4D23-A20F-982C8E143E88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubscriptionManagement.Api", "SubscriptionManagement.Api\SubscriptionManagement.Api.csproj", "{A9F37F3E-7D19-447B-9F9B-2184E565D4FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubscriptionManagement.Api", "SubscriptionManagement.Api\SubscriptionManagement.Api.csproj", "{A9F37F3E-7D19-447B-9F9B-2184E565D4FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubscriptionManagement.Infrastructure", "SubscriptionManagement.Infrastructure\SubscriptionManagement.Infrastructure.csproj", "{769B1B14-CF0D-488D-AEE8-D2D53D047915}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubscriptionManagement.Infrastructure", "SubscriptionManagement.Infrastructure\SubscriptionManagement.Infrastructure.csproj", "{769B1B14-CF0D-488D-AEE8-D2D53D047915}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5D3670E5-272E-40AC-B02D-530D1407506B}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
