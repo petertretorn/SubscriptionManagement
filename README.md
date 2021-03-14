@@ -1,5 +1,7 @@
 # Instructions
 
+The solution itself is designed according to the onion architecture with the domain model/logic in the center and dependencies pointing inwards. The middle application layer  implements the usecases and coordinates work between domain and infrastructure layers. The application layer is organized around features so that all code realted to a specific feature is colocated.
+
 - open solution in Visual Studio
 - open package manager console
 - select Infrastructure as default project
@@ -47,4 +49,5 @@ var response = await client.PostAsync(url, data);
 string result = response.Content.ReadAsStringAsync().Result;
 ```
 
-If the client code resides inside an ASP.NET Core application it can be advantageous to use the HttpClientFactory and possible create a typed HttpClient that can be registered with the DI container
+If the client code resides inside an ASP.NET Core application it can be advantageous to use the HttpClientFactory and possibly create a typed HttpClient that can be registered with the DI container
+
