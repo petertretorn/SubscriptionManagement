@@ -48,9 +48,9 @@ namespace SubscriptionManagement.Api.Controllers
         [HttpDelete("{id}", Name = "DeleteSubscription")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            var deleteEventCommand = new DeleteSubscriptionCommand() { SubscriptionId = id };
+            var command = new DeleteSubscriptionCommand() { SubscriptionId = id };
             
-            await _mediator.Send(deleteEventCommand);
+            await _mediator.Send(command);
             
             return NoContent();
         }

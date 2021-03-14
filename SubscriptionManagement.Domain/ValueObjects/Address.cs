@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SubscriptionManagement.Domain.Common;
+using System;
 
 namespace SubscriptionManagement.Domain.ValueObjects
 {
-    public class Address
+    public class Address : ValueObject
     {
         public String Street { get; set; }
 

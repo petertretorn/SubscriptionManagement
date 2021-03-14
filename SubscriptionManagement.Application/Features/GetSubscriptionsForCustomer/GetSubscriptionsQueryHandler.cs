@@ -14,7 +14,6 @@ namespace SubscriptionManagement.Application.Features.GetSubscriptionsForUser
     public class GetSubscriptionsQueryHandler : IRequestHandler<GetSubscriptionsQuery, IEnumerable<SubscriptionDto>>
     {
         private ISubscriptionRepository _subscriptionRepository;
-        private IMapper _mapper;
 
         public GetSubscriptionsQueryHandler(
             ISubscriptionRepository subscriptionRepository)
@@ -26,7 +25,7 @@ namespace SubscriptionManagement.Application.Features.GetSubscriptionsForUser
         {
             var subscriptions = await _subscriptionRepository.GetSubscriptionsForCustomer(request.CustomerId);
 
-            var subscriptionDtos = subscriptions.Select(s => SubscriptionMapper.Map(s));
+            var subscriptionDtos = subscriptions.Select(SubscriptionMapper.Map);
 
             return subscriptionDtos;
         }

@@ -9,18 +9,18 @@ namespace SubscriptionManagement.Domain.Entities
 {
     public class Subscription : Entity
     {
-        public Guid CustomerId { get; set; }
-        public DateTime Start { get; set; }
+        public Guid CustomerId { get; private set; }
+        public DateTime Start { get; private set; }
 
-        public DateTime? End { get; set; }
+        public DateTime? End { get; private set; }
 
-        public SubscriptionType Type { get; set; }
-        public PricingPlan PricingPlan { get; set; }
+        public SubscriptionType Type { get; private set; }
+        public PricingPlan PricingPlan { get; private set; }
 
 
-        public bool AutomaticallyReneweble { get; set; }
+        public bool AutomaticallyReneweble { get; private set; }
         
-        public bool HasDefaulted { get; set; }
+        public bool HasDefaulted { get; private set; }
 
         //this method could be invoked in response to event received from a possible Billing context/service
         public void MarkSubscriptionAsDefaulted()

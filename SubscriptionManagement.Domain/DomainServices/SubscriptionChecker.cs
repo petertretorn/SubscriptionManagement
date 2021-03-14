@@ -6,14 +6,14 @@ using System.Text;
 
 namespace SubscriptionManagement.Domain.DomainServices
 {
-    public class SubscriptionChecker : ISubscriptionChecker
+    public class SubscriptionChecker
     {
         public SubscriptionChecker(IEnumerable<ISubscriptionRule> rules)
         {
             this._subscriptionRules = rules;
         }
 
-        // TODO - register with DI container
+        // TODO - register with DI container to inject rules
         public SubscriptionChecker()
         {
             this._subscriptionRules = new List<ISubscriptionRule> { new NoOverDuePaymentRule(), new ResidenceRule() };

@@ -10,9 +10,9 @@ namespace SubscriptionManagement.Domain.Entities
 {
     public class Customer : Entity
     {
-        public string Name { get; set; }
-        public Address Address { get; set; }
-        public String Email { get; set; }
+        public string Name { get; private set; }
+        public Address Address { get; private set; }
+        public String Email { get; private set; }
 
         public IReadOnlyCollection<Subscription> Subscriptions { get; private set; } = new List<Subscription>();
 

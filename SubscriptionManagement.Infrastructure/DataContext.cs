@@ -2,8 +2,6 @@
 using SubscriptionManagement.Domain.Entities;
 using SubscriptionManagement.Domain.ValueObjects;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SubscriptionManagement.Infrastructure
 {

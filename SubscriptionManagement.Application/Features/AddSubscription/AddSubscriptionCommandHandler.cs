@@ -27,7 +27,9 @@ namespace SubscriptionManagement.Application.Features.AddSubscription
             var validationResult = await validator.ValidateAsync(request);
 
             if (validationResult.Errors.Count > 0)
+            {
                 throw new Exceptions.ValidationException(validationResult);
+            }
 
             var subscription = SubscriptionMapper.Map(request);
 

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SubscriptionManagement.Domain.Common;
+using System;
 
 namespace SubscriptionManagement.Domain.ValueObjects
 {
-    public class PricingPlan
+    public class PricingPlan : ValueObject
     {
         public decimal FlatFee { get; set; }
         public decimal MonthlyRate { get; set; }

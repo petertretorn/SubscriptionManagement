@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SubscriptionManagement.Domain.Common;
+using System;
 
-namespace SubscriptionManagement.Domain.Entities
+namespace SubscriptionManagement.Domain.ValueObjects
 {
-    public class SubscriptionType
+    public class SubscriptionType : ValueObject
     {
         public Guid ProductId { get; set; }
-
         public Level Level { get; set; }
         public string Description { get; set; }
         public int PeriodInDays { get; set; }
-
     }
 
     public enum Level
