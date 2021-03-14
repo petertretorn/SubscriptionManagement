@@ -9,6 +9,14 @@ namespace SubscriptionManagement.Domain.Entities
 {
     public class Subscription : Entity
     {
+        private Subscription() { }
+        public Subscription(Guid customerId, DateTime start, SubscriptionType type, PricingPlan pricingPlan)
+        {
+            CustomerId = customerId;
+            Start = start;
+            Type = type;
+            PricingPlan = pricingPlan;
+        }
         public Guid CustomerId { get; private set; }
         public DateTime Start { get; private set; }
 
@@ -16,9 +24,6 @@ namespace SubscriptionManagement.Domain.Entities
 
         public SubscriptionType Type { get; private set; }
         public PricingPlan PricingPlan { get; private set; }
-
-
-        public bool AutomaticallyReneweble { get; private set; }
         
         public bool HasDefaulted { get; private set; }
 
@@ -30,8 +35,6 @@ namespace SubscriptionManagement.Domain.Entities
 
         public void Cancel()
         {
-            AutomaticallyReneweble = false;
-
             var isRenewedToday = RemainingDays() == 0;
 
             if (isRenewedToday)

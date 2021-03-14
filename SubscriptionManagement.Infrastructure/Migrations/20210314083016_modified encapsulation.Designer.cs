@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SubscriptionManagement.Infrastructure;
 
 namespace SubscriptionManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210314083016_modified encapsulation")]
+    partial class modifiedencapsulation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,7 +40,7 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("33eb22ad-6700-45db-a209-03b9a6addacb"),
+                            Id = new Guid("f54268ae-67d8-4e5e-ac1b-8a1189592f72"),
                             Email = "something@gmail.com",
                             Name = "Jens Pedersen"
                         });
@@ -71,8 +73,8 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("54554e5c-9b0d-4487-a739-0ab931bfb4f1"),
-                            CustomerId = new Guid("33eb22ad-6700-45db-a209-03b9a6addacb"),
+                            Id = new Guid("7e801f18-0a6c-4075-8364-ada243c3ab87"),
+                            CustomerId = new Guid("f54268ae-67d8-4e5e-ac1b-8a1189592f72"),
                             HasDefaulted = false,
                             Start = new DateTime(2020, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
@@ -104,7 +106,7 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                             b1.HasData(
                                 new
                                 {
-                                    CustomerId = new Guid("33eb22ad-6700-45db-a209-03b9a6addacb"),
+                                    CustomerId = new Guid("f54268ae-67d8-4e5e-ac1b-8a1189592f72"),
                                     City = "Odensen",
                                     PostalCode = "5000",
                                     Street = "Fuglebakken 33"
@@ -146,7 +148,7 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                             b1.HasData(
                                 new
                                 {
-                                    SubscriptionId = new Guid("54554e5c-9b0d-4487-a739-0ab931bfb4f1"),
+                                    SubscriptionId = new Guid("7e801f18-0a6c-4075-8364-ada243c3ab87"),
                                     CurrencyCode = "DKK",
                                     FlatFee = 100m,
                                     MonthlyRate = 99m
@@ -180,11 +182,11 @@ namespace SubscriptionManagement.Infrastructure.Migrations
                             b1.HasData(
                                 new
                                 {
-                                    SubscriptionId = new Guid("54554e5c-9b0d-4487-a739-0ab931bfb4f1"),
+                                    SubscriptionId = new Guid("7e801f18-0a6c-4075-8364-ada243c3ab87"),
                                     Description = "some description",
                                     Level = 4,
                                     PeriodInDays = 365,
-                                    ProductId = new Guid("cc507cd9-b9bc-49da-b5fa-9a77b36c4816")
+                                    ProductId = new Guid("defd8328-4265-4845-996e-2a7427c315e5")
                                 });
                         });
 

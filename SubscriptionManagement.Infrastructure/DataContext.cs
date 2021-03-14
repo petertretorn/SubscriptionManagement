@@ -17,7 +17,7 @@ namespace SubscriptionManagement.Infrastructure
         {
             modelBuilder.Entity<Customer>().OwnsOne(c => c.Address);
 
-            var customerId = Guid.NewGuid();
+            var customerId = Guid.Parse("33eb22ad-6700-45db-a209-03b9a6addacb");
 
             modelBuilder.Entity<Customer>(b =>
             {
