@@ -30,3 +30,14 @@ POST https://localhost:44338/api/subscription
 To delete subscription issue DELETE request with subscripId in URL path:
 
 DELETE https://localhost:44338/api/subscription/ \<subscripId>
+
+```C#
+var person = new Person("John Doe", "gardener");
+
+var json = JsonConvert.SerializeObject(person);
+var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+var url = "https://httpbin.org/post";
+using var client = new HttpClient();
+
+var response = await client.PostAsync(url, data);
