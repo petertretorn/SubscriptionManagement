@@ -1,6 +1,6 @@
 # Instructions
 
-The solution itself is designed according to the onion architecture with the domain model/logic in the center and dependencies pointing inwards. The middle application layer  implements the usecases and coordinates work between domain and infrastructure layers. The application layer is organized around features so that all code realted to a specific feature is colocated.
+The solution is designed according to the onion architecture with the domain model/logic in the center and the dependencies pointing inwards. The middle application layer  implements the usecases and coordinates work between domain and infrastructure layers. The application layer is organized around features so that all code related to a specific feature is colocated. To get solution up and running:
 
 - open solution in Visual Studio
 - open package manager console
