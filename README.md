@@ -29,6 +29,9 @@ POST https://localhost:44338/api/subscription
 	"subscriptionPeriodInDays": 90
 }
 ```
+Level and category are enumerations that can take possible values of Basic, Standard or Premium for level and TV, Broadband or Blockbuster for category.
+
+
 To delete subscription issue DELETE request with subscripId in URL path:
 
 DELETE https://localhost:44338/api/subscription/ \<subscripId>
