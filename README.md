@@ -30,6 +30,7 @@ POST https://localhost:44338/api/subscription
 }
 ```
 Level and category are enumerations that can take possible values of Basic, Standard or Premium for level and TV, Broadband or Blockbuster for category.
+The API will respond with custom error when attempting to create a subscription with a start date in the past.
 
 
 To delete subscription issue DELETE request with subscripId in URL path:
