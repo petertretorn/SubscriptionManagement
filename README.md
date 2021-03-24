@@ -1,4 +1,4 @@
-# Instructions
+# Example Web API project
 
 The solution is designed according to the onion architecture with the domain model/logic in the center and the dependencies pointing inwards. The middle application layer  implements the usecases and coordinates work between domain and infrastructure layers. The application layer is organized around features so that all code related to a specific feature is colocated. To get solution up and running:
 
@@ -38,21 +38,4 @@ To delete subscription issue DELETE request with subscripId in URL path:
 
 DELETE https://localhost:44338/api/subscription/ \<subscripId>
 
-I didn't get around to code up a client library, but given the solution provides languange agnostic HTTP endpoints it would be a question of programmatically issuing HTTP requests. In C# that could be done using HttpClient, possibly hidden behind an abstraction for easier consumption. POST request example:
-
-```C#
-var subscriptionCommand = new subscriptionCommand("33eb22ad-6700-45db-a209-03b9a6addacb", ..... etc);
-
-var json = JsonConvert.SerializeObject(person);
-var data = new StringContent(json, Encoding.UTF8, "application/json");
-
-var url = "https://localhost:44338/api/subscription";
-using var client = new HttpClient();
-
-var response = await client.PostAsync(url, data);
-
-string result = response.Content.ReadAsStringAsync().Result;
-```
-
-If the client code resides inside an ASP.NET Core application it can be advantageous to use the HttpClientFactory and create a typed HttpClient adorned with custom methods and register it with the DI container.
 
